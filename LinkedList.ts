@@ -1,24 +1,31 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+import Node from './SinglyNode';
 
-class LinkedList {
-  constructor(value) {
+class LinkedList<T> {
+  private head: Node<T> | null;
+  private tail: Node<T> | null;
+  private length: number = 0;
+
+  constructor(value: T) {
     const newNode = new Node(value);
     this.head = newNode;
     this.tail = this.head;
 
-    this.length = 1;
+    this.length++;
   }
 
-  getLength() {
+  public getLength() {
     return this.length;
   }
 
-  printList() {
+  public getHead() {
+    return this.head;
+  }
+
+  public getTail() {
+    return this.tail;
+  }
+
+  public printList() {
     const result = [];
     let currentNode = this.head;
     while (currentNode !== null) {
@@ -29,55 +36,55 @@ class LinkedList {
     return result;
   }
 
-  append(value, ...otherValues) {
+  public append(value: T, ...otherValues: T[]): LinkedList<T> {
+    if (!this.tail) return this;
+
     const newNode = new Node(value);
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
 
     if (otherValues.length) {
-      otherValues.forEach(value => {
-        if (!this.tail) return;
-
+      for (const value of otherValues) {
         const newNode = new Node(value);
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
-      });
+      }
     }
 
     return this;
   }
 
-  prepend(value, ...otherValues) {
+  public prepend(value: T, ...otherValues: T[]): LinkedList<T> {
     const newNode = new Node(value);
     newNode.next = this.head;
     this.head = newNode;
     this.length++;
 
     if (otherValues.length) {
-      otherValues.forEach(value => {
+      for (const value of otherValues) {
         const newNode = new Node(value);
         newNode.next = this.head;
         this.head = newNode;
         this.length++;
-      });
+      }
     }
 
     return this;
   }
 
-  insert(index, value) {
+  public insert(index: number, value: T): LinkedList<T> {
     // IF INDEX IS MORE THAN LENGTH THAN ADD THE VALUE TO THE END OF THE LINKED LIST
     if (index >= this.length) return this.append(value);
-
     // IF INDEX IS 0 THEN ADD IT TO THE START OF THE LINKED LIST
     if (index === 0) return this.prepend(value);
 
     // DEALING WITH THE REMAINING CONDITIONS
     const newNode = new Node(value);
-
     const previousPointer = this.traverseToIndex(index - 1);
+
+    if (!previousPointer) return this;
     const nextPointer = previousPointer.next;
 
     previousPointer.next = newNode;
@@ -87,12 +94,13 @@ class LinkedList {
     return this;
   }
 
-  remove(index) {
+  public remove(index: number): LinkedList<T> {
     // IF INDEX IS MORE THAN LENGTH THEN SIMPLY RETURN
     if (index >= this.length) return this;
 
     // IF INDEX IS ZERO THEN REMOVE THE FIRST ELEMENT
     if (index === 0) {
+      if (!this.head) return this;
       const nextPointer = this.head.next;
       this.head = nextPointer;
       this.length--;
@@ -102,7 +110,9 @@ class LinkedList {
 
     // DEALING WITH THE REMAINING CONDITIONS
     const previousPointer = this.traverseToIndex(index - 1);
+    if (!previousPointer) return this; // CHECK
     const currentNode = previousPointer.next;
+    if (!currentNode) return this; // CHECK
     const nextPointer = currentNode.next;
 
     // REMOVING
@@ -116,10 +126,12 @@ class LinkedList {
     return this;
   }
 
-  traverseToIndex(index) {
+  private traverseToIndex(index: number): Node<T> | null {
     let counter = 0;
     let currentNode = this.head;
+
     while (counter !== index) {
+      if (!currentNode) return null;
       currentNode = currentNode.next;
       counter++;
     }
@@ -127,7 +139,7 @@ class LinkedList {
     return currentNode;
   }
 
-  reverse() {
+  public reverse(): LinkedList<T> {
     let previousPointer = null;
     let current = this.head;
     let nextPointer;
@@ -146,4 +158,4 @@ class LinkedList {
   }
 }
 
-const linkedList = new LinkedList(5);
+export default LinkedList;
