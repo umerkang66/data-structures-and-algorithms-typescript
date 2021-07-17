@@ -104,6 +104,74 @@ class DoublyLinkedList<T> {
     return this;
   }
 
+  public remove(index: number): DoublyLinkedList<T> {
+    // IF INDEX IS MORE THAN OR EQUAL TO LENGTH THEN RETURN
+    if (index >= this.length) return this;
+
+    // IF INDEX IS ZERO REMOVE THE FIRST ELEMENT IN LINKED LIST
+    if (index === 0) {
+      const currentNode = this.head;
+      if (!currentNode) return this;
+      const nextPointer = currentNode.next;
+
+      if (!nextPointer) return this;
+      nextPointer.previous = null;
+      this.head = nextPointer;
+      this.length--;
+
+      return this;
+    }
+
+    // IF REMOVING THE LAST ELEMENT
+    if (index === this.length - 1) {
+      const currentNode = this.tail;
+      const previousPointer = currentNode?.previous;
+      if (!previousPointer) return this;
+
+      previousPointer.next = null;
+      this.tail = previousPointer;
+      this.length--;
+
+      return this;
+    }
+
+    // DEALING WITH THE REMAINING CASES
+    const previousPointer = this.traverseToIndex(index - 1);
+    if (!previousPointer) return this;
+
+    const nextPointer = previousPointer.next?.next;
+    if (!nextPointer) return this;
+
+    // REMOVING
+    previousPointer.next = nextPointer;
+    nextPointer.previous = previousPointer;
+    this.length--;
+
+    return this;
+  }
+
+  reverse(): DoublyLinkedList<T> {
+    let pointer1 = this.head;
+    if (!pointer1) return this;
+
+    this.tail = pointer1;
+    let pointer2 = pointer1.next;
+
+    pointer1.next = null;
+    pointer1.previous = pointer2;
+
+    while (pointer2 !== null) {
+      pointer2.previous = pointer2.next;
+      pointer2.next = pointer1;
+
+      pointer1 = pointer2;
+      pointer2 = pointer2.previous;
+    }
+
+    this.head = pointer1;
+    return this;
+  }
+
   public traverseToIndex(index: number): DoublyNode<T> | null {
     let counter = 0;
     let currentNode = this.head;
