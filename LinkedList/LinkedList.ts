@@ -13,19 +13,19 @@ class LinkedList<T> {
     this.length++;
   }
 
-  public getLength() {
+  public getLength(): number {
     return this.length;
   }
 
-  public getHead() {
+  public getHead(): Node<T> | null {
     return this.head;
   }
 
-  public getTail() {
+  public getTail(): Node<T> | null {
     return this.tail;
   }
 
-  public printList() {
+  public printList(): T[] {
     const result = [];
     let currentNode = this.head;
     while (currentNode !== null) {
@@ -126,7 +126,7 @@ class LinkedList<T> {
     return this;
   }
 
-  private traverseToIndex(index: number): Node<T> | null {
+  public traverseToIndex(index: number): Node<T> | null {
     let counter = 0;
     let currentNode = this.head;
 
