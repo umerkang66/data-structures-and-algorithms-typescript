@@ -1,5 +1,3 @@
-'use strict';
-
 const str1 = 'abc#d';
 const str2 = 'abzz##d';
 
@@ -32,7 +30,6 @@ isTypedOutStringsEqualBruteForce(str1, str2);
 const isTypedOutStrings = (str1: string, str2: string): boolean => {
   let pointer1 = str1.length - 1;
   let pointer2 = str2.length - 1;
-
   while (pointer1 >= 0 || pointer2 >= 0) {
     if (str1[pointer1] === '#' || str2[pointer2] === '#') {
       if (str1[pointer1] === '#') {

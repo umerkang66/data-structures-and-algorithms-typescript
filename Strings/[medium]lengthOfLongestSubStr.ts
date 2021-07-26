@@ -6,7 +6,11 @@ const lengthOfLongestSubStrBruteForce = function (str: string): number {
   let longest = 0;
 
   for (let i = 0; i < str.length; i++) {
-    let seenChar = {};
+    interface SeenChar {
+      [key: string]: boolean;
+    }
+
+    let seenChar: SeenChar = {};
     let curLength = 0;
 
     for (let j = i; j < str.length; j++) {
@@ -28,7 +32,11 @@ lengthOfLongestSubStrBruteForce(str);
 const lengthOfLongestSubStr = (str: string): number => {
   if (str.length <= 0) return str.length;
 
-  const strObj = {};
+  interface StrObj {
+    [key: string]: number;
+  }
+
+  const strObj: StrObj = {};
   let maxLength = 0;
   let start = -1;
 
