@@ -1,7 +1,8 @@
 const arr = [4, 8, 1, 10, 3, 9];
+// maxArea = min(pointer1, pointer2) * (pointer2Index - pointer1Index)
 
 // Brute force solution O(n^2)
-const mostWaterBF = function (arr: number[]): number {
+const containerWithMostWaterBF = function (arr: number[]): number {
   if (arr.length <= 2) return 0;
   let maxArea = 0;
 
@@ -17,25 +18,25 @@ const mostWaterBF = function (arr: number[]): number {
   return maxArea;
 };
 
-mostWaterBF(arr);
+containerWithMostWaterBF(arr);
 
 // O(n) solution using a technique SHIFTING POINTERS
-const mostWater = function (arr: number[]) {
-  let pointer1 = 0;
-  let pointer2 = arr.length - 1;
+const containerWithMostWater = (heights: number[]): number => {
+  let pointerLeft = 0;
+  let pointerRight = heights.length - 1;
   let maxArea = 0;
 
-  while (pointer1 < pointer2) {
-    const height = Math.min(arr[pointer1], arr[pointer2]);
-    const width = pointer2 - pointer1;
+  while (pointerLeft < pointerRight) {
+    const height = Math.min(heights[pointerLeft], heights[pointerRight]);
+    const width = pointerRight - pointerLeft;
     const area = height * width;
     maxArea = Math.max(maxArea, area);
 
-    if (arr[pointer1] <= arr[pointer2]) pointer1++;
-    else pointer2--;
+    if (heights[pointerLeft] <= heights[pointerRight]) pointerLeft++;
+    else pointerRight--;
   }
 
   return maxArea;
 };
 
-mostWater(arr);
+containerWithMostWater(arr);
