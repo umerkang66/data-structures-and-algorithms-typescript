@@ -30,25 +30,25 @@ lengthOfLongestSubStrBruteForce(str);
 
 // CODING OUT OPTIMAL SOLUTION WITH O(n) TIME COMPLEXITY, AND O(n) SPACE COMPLEXITY
 const lengthOfLongestSubStr = (str: string): number => {
-  if (str.length <= 0) return str.length;
+  if (str.length <= 1) return str.length;
 
-  interface StrObj {
+  interface SeenChar {
     [key: string]: number;
   }
 
-  const strObj: StrObj = {};
+  const seenChar: SeenChar = {};
   let maxLength = 0;
-  let start = -1;
+  let left = 0;
 
-  for (let i = 0; i < str.length; i++) {
-    const curChar = str[i];
-    if (strObj[curChar] > start) start = strObj[curChar];
-    strObj[curChar] = i;
+  for (let right = 0; right < str.length; right++) {
+    const curChar = str[right];
+    if (seenChar[curChar] >= left) left = seenChar[curChar] + 1;
+    seenChar[curChar] = right;
 
-    maxLength = Math.max(maxLength, i - start);
+    maxLength = Math.max(maxLength, right - left + 1);
   }
 
   return maxLength;
 };
 
-lengthOfLongestSubStr(str);
+console.log(lengthOfLongestSubStr(str));
