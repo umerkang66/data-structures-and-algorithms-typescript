@@ -28,7 +28,6 @@ const lengthOfLongestSubStrBruteForce = function (str: string): number {
 
 lengthOfLongestSubStrBruteForce(str);
 
-// CODING OUT OPTIMAL SOLUTION WITH O(n) TIME COMPLEXITY, AND O(n) SPACE COMPLEXITY
 const lengthOfLongestSubStr = (str: string): number => {
   if (str.length <= 1) return str.length;
 
