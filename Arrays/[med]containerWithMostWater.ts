@@ -1,5 +1,5 @@
 const arr = [4, 8, 1, 10, 3, 9];
-// maxArea = min(pointer1, pointer2) * (pointer2Index - pointer1Index)
+// maxArea = min(pointerLeft, pointerRight) * (pointerRightIndex - pointerLeftIndex)
 
 // Brute force solution O(n^2)
 const containerWithMostWaterBF = function (arr: number[]): number {

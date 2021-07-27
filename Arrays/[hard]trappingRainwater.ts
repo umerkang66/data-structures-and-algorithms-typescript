@@ -33,27 +33,28 @@ const trapRainWaterBF = function (nums: number[]): number {
 trapRainWaterBF(nums);
 
 // SOLUTION WITH O(N) LINEAR TIME COMPLEXITY USING TWO POINTERS TECHNIQUE
-const trapRainWater = function (nums: number[]): number {
-  const heights = [...nums];
-  let pointerL = 0;
-  let pointerR = heights.length - 1;
-  let maxL = 0;
-  let maxR = 0;
+const trappingRainWater = (heights: number[]) => {
+  let pointerLeft = 0;
+  let pointerRight = heights.length - 1;
+  let maxLeft = 0;
+  let maxRight = 0;
   let total = 0;
 
-  while (pointerL < pointerR) {
-    if (heights[pointerL] <= heights[pointerR]) {
-      if (heights[pointerL] >= maxL) maxL = heights[pointerL];
-      else total += maxL - heights[pointerL];
-      pointerL++;
+  while (pointerLeft < pointerRight) {
+    if (heights[pointerLeft] <= heights[pointerRight]) {
+      if (heights[pointerLeft] > maxLeft) maxLeft = heights[pointerLeft];
+      else total += maxLeft - heights[pointerLeft];
+
+      pointerLeft++;
     } else {
-      if (heights[pointerR] >= maxR) maxR = heights[pointerR];
-      else total += maxR - heights[pointerR];
-      pointerR--;
+      if (heights[pointerRight] > maxRight) maxRight = heights[pointerRight];
+      else total += maxRight - heights[pointerRight];
+
+      pointerRight--;
     }
   }
 
   return total;
 };
 
-trapRainWater(nums);
+trappingRainWater(nums);
