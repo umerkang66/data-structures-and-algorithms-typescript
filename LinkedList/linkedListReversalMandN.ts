@@ -40,8 +40,8 @@ const reverseBetween = (
         currentPosition++;
     }
 
-    if (tail) tail.next = currentNode;
     if (start) start.next = newList;
+    if (tail) tail.next = currentNode;
 
     if (left === 1) return newList;
     return head;
