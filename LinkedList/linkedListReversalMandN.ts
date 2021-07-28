@@ -128,5 +128,5 @@ const linkedList = new LinkedList(1);
 linkedList.append(2, 3, 4, 5);
 
 console.log(printList(linkedList.getHead()));
-const reversedHead = reverseAtMandN(linkedList.getHead(), 1, 4);
+const reversedHead = reverseAtMandN(linkedList.getHead(), 2, 4);
 console.log(printList(reversedHead));
