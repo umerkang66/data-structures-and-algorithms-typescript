@@ -140,9 +140,9 @@ class LinkedList<T> {
   }
 
   public reverse(): LinkedList<T> {
-    let previousPointer = null;
+    let previousPointer: Node<T> | null = null;
     let current = this.head;
-    let nextPointer;
+    let nextPointer: Node<T> | null;
     this.tail = current;
 
     while (current) {
