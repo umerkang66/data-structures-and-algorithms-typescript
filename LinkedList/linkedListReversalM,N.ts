@@ -76,6 +76,19 @@ const reverseAtIndex = (
     return previousPointer;
 };
 
+const insertOnTheRightSide = (
+    before: SinglyNode<number> | null,
+    after: SinglyNode<number> | null
+): void => {
+    const lengthPreviousReverseNode = findLinkedLength(before);
+    const previousPointerMovedToLast = traverseToLastIndex(
+        before,
+        lengthPreviousReverseNode
+    );
+
+    if (previousPointerMovedToLast) previousPointerMovedToLast.next = after;
+};
+
 const reverseAtMandN = (
     head: SinglyNode<number> | null,
     M: number,
@@ -90,19 +103,7 @@ const reverseAtMandN = (
     // DEALING WITH THE CASE IF M IS 1: THAT MEANS WE DON'T HAVE TO JOIN AT THE LEFT
     if (M === 1) {
         const reversedRequestedList = reverseAtIndex(head, M, N);
-        console.log(reversedRequestedList);
-
-        const lengthPreviousReverseNode = findLinkedLength(
-            reversedRequestedList
-        );
-
-        const previousPointerMovedToLast = traverseToLastIndex(
-            reversedRequestedList,
-            lengthPreviousReverseNode
-        );
-
-        if (previousPointerMovedToLast)
-            previousPointerMovedToLast.next = afterReverseNode;
+        insertOnTheRightSide(reversedRequestedList, afterReverseNode);
 
         // RETURNING REVERSED HEAD
         return (head = reversedRequestedList);
@@ -110,24 +111,14 @@ const reverseAtMandN = (
 
     // GETTING THE BEFORE AND AFTER VALUES OF LINKED LIST BEFORE
     const previousReverseNode = traverseToIndex(head, M - 1);
-
     // REVERSING THE REQUESTED NODES
     const reversedRequestedList = reverseAtIndex(head, M, N);
 
     // INSERTING IN THE ORIGINAL HEAD
     // Inserting on the left side of original node
     if (previousReverseNode) previousReverseNode.next = reversedRequestedList;
-
     // Inserting on the right side of original node
-    const lengthPreviousReverseNode = findLinkedLength(previousReverseNode);
-
-    const previousPointerMovedToLast = traverseToLastIndex(
-        previousReverseNode,
-        lengthPreviousReverseNode
-    );
-
-    if (previousPointerMovedToLast)
-        previousPointerMovedToLast.next = afterReverseNode;
+    insertOnTheRightSide(previousReverseNode, afterReverseNode);
 
     // RETURNING REVERSED HEAD
     return head;
