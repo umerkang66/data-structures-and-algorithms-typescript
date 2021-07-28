@@ -12,121 +12,43 @@ const printList = (head: SinglyNode<number> | null): number[] => {
     return printResult;
 };
 
-const traverseToIndex = (
+const reverseBetween = (
     head: SinglyNode<number> | null,
-    index: number
+    left: number,
+    right: number
 ): SinglyNode<number> | null => {
-    let counter = 1;
-    let currentNode = head;
-    while (counter !== index) {
+    let currentPosition = 1,
+        currentNode = head,
+        start = head;
+
+    while (currentPosition < left) {
+        start = currentNode;
         if (currentNode) currentNode = currentNode.next;
-        counter++;
+        currentPosition++;
     }
 
-    return currentNode;
-};
+    let newList = null,
+        tail = currentNode;
 
-const traverseToLastIndex = (
-    head: SinglyNode<number> | null,
-    linkedListLength: number
-): SinglyNode<number> | null => {
-    let currentNode = head;
-    let counter = 0;
+    while (currentPosition >= left && currentPosition <= right) {
+        if (!currentNode) return head;
+        const next = currentNode.next;
+        currentNode.next = newList;
+        newList = currentNode;
+        currentNode = next;
 
-    while (counter !== linkedListLength - 1) {
-        if (currentNode) currentNode = currentNode.next;
-        counter++;
+        currentPosition++;
     }
 
-    return currentNode;
-};
+    if (tail) tail.next = currentNode;
+    if (start) start.next = newList;
 
-const findLinkedLength = (head: SinglyNode<number> | null): number => {
-    let counter = 0;
-    let currentNode = head;
-    while (currentNode) {
-        counter++;
-        currentNode = currentNode.next;
-    }
-
-    return counter;
-};
-
-const reverseAtIndex = (
-    head: SinglyNode<number> | null,
-    M: number,
-    N: number
-): SinglyNode<number> | null => {
-    let previousPointer = null;
-    let currentPointer = traverseToIndex(head, M);
-    let nextPointer;
-
-    let startingIndex = M;
-    while (startingIndex !== N + 1) {
-        if (!currentPointer) return head;
-        nextPointer = currentPointer.next;
-        currentPointer.next = previousPointer;
-
-        previousPointer = currentPointer;
-        currentPointer = nextPointer;
-
-        startingIndex++;
-    }
-
-    return previousPointer;
-};
-
-const insertOnTheRightSide = (
-    before: SinglyNode<number> | null,
-    after: SinglyNode<number> | null
-): void => {
-    const lengthPreviousReverseNode = findLinkedLength(before);
-    const previousPointerMovedToLast = traverseToLastIndex(
-        before,
-        lengthPreviousReverseNode
-    );
-
-    if (previousPointerMovedToLast) previousPointerMovedToLast.next = after;
-};
-
-const reverseAtMandN = (
-    head: SinglyNode<number> | null,
-    M: number,
-    N: number
-): SinglyNode<number> | null => {
-    // FINDING LENGTH OF ORIGINAL HEAD
-    const lengthOfOriginalHead = findLinkedLength(head);
-    // DEALING WITH CASE IF SECOND NUMBER N IS MORE THAN LENGTH OF LINKED LIST OR FIRST NUMBER M IS LESS THAN 0
-    if (M < 1 || N > lengthOfOriginalHead) return head;
-
-    const afterReverseNode = traverseToIndex(head, N + 1);
-    // DEALING WITH THE CASE IF M IS 1: THAT MEANS WE DON'T HAVE TO JOIN AT THE LEFT
-    if (M === 1) {
-        const reversedRequestedList = reverseAtIndex(head, M, N);
-        insertOnTheRightSide(reversedRequestedList, afterReverseNode);
-
-        // RETURNING REVERSED HEAD
-        return (head = reversedRequestedList);
-    }
-
-    // GETTING THE BEFORE AND AFTER VALUES OF LINKED LIST BEFORE
-    const previousReverseNode = traverseToIndex(head, M - 1);
-    // REVERSING THE REQUESTED NODES
-    const reversedRequestedList = reverseAtIndex(head, M, N);
-
-    // INSERTING IN THE ORIGINAL HEAD
-    // Inserting on the left side of original node
-    if (previousReverseNode) previousReverseNode.next = reversedRequestedList;
-    // Inserting on the right side of original node
-    insertOnTheRightSide(previousReverseNode, afterReverseNode);
-
-    // RETURNING REVERSED HEAD
+    if (left === 1) return newList;
     return head;
 };
 
-const linkedList = new LinkedList(1);
+const linkedList = new LinkedList<number>(1);
 linkedList.append(2, 3, 4, 5);
 
-console.log(printList(linkedList.getHead()));
-const reversedHead = reverseAtMandN(linkedList.getHead(), 2, 4);
-console.log(printList(reversedHead));
+const resversedHead = reverseBetween(linkedList.getHead(), 2, 4);
+console.log(printList(resversedHead));
