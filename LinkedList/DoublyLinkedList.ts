@@ -1,4 +1,4 @@
-import DoublyNode from "./DoublyNode";
+import DoublyNode from './DoublyNode';
 
 class DoublyLinkedList<T> {
     private head: DoublyNode<T> | null;
