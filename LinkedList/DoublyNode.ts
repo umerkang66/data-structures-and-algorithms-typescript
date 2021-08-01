@@ -1,7 +1,7 @@
 class DoublyNode<T> {
-    value: T;
-    next: DoublyNode<T> | null;
-    previous: DoublyNode<T> | null;
+    public value: T;
+    public next: DoublyNode<T> | null;
+    public previous: DoublyNode<T> | null;
 
     constructor(value: T) {
         this.value = value;
