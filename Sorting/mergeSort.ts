@@ -1,3 +1,4 @@
+// donot use merge sort if you are worried about memory. use it when the items are very large and you don't care about memory
 const merge = (
     data: number[],
     start: number,
