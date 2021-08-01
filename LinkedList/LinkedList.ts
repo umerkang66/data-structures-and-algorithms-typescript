@@ -75,18 +75,16 @@ class LinkedList<T> {
     }
 
     public insert(index: number, value: T): LinkedList<T> {
-        // IF INDEX IS MORE THAN LENGTH THAN ADD THE VALUE TO THE END OF THE LINKED LIST
+        // If index is more than length than add the value to the end of the linked list
         if (index >= this.length) return this.append(value);
-        // IF INDEX IS 0 THEN ADD IT TO THE START OF THE LINKED LIST
+        // If index is 0 then add it to the start of the linked list
         if (index === 0) return this.prepend(value);
 
-        // DEALING WITH THE REMAINING CONDITIONS
+        // Dealing with the remaining cases
         const newNode = new Node(value);
         const previousPointer = this.traverseToIndex(index - 1);
-
         if (!previousPointer) return this;
         const nextPointer = previousPointer.next;
-
         previousPointer.next = newNode;
         newNode.next = nextPointer;
         this.length++;
@@ -95,10 +93,10 @@ class LinkedList<T> {
     }
 
     public remove(index: number): LinkedList<T> {
-        // IF INDEX IS MORE THAN LENGTH THEN SIMPLY RETURN
+        // If index is more than length then simply return
         if (index >= this.length) return this;
 
-        // IF INDEX IS ZERO THEN REMOVE THE FIRST ELEMENT
+        // If index is 0 then remove the first element
         if (index === 0) {
             if (!this.head) return this;
             const nextPointer = this.head.next;
@@ -108,18 +106,18 @@ class LinkedList<T> {
             return this;
         }
 
-        // DEALING WITH THE REMAINING CONDITIONS
+        // Dealing with the remaining conditions
         const previousPointer = this.traverseToIndex(index - 1);
         if (!previousPointer) return this; // CHECK
         const currentNode = previousPointer.next;
         if (!currentNode) return this; // CHECK
         const nextPointer = currentNode.next;
 
-        // REMOVING
+        // Removing
         previousPointer.next = nextPointer;
         this.length--;
 
-        // SETTING THE LAST ELEMENT TO THE TAIL
+        // Setting the last element to the tail
         const lastElement = this.traverseToIndex(this.length - 1);
         this.tail = lastElement;
 
