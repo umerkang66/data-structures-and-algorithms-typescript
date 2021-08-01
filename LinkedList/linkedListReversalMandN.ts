@@ -1,17 +1,6 @@
 import LinkedList from './LinkedList';
 import SinglyNode from './SinglyNode';
 
-const printList = (head: SinglyNode<number> | null): number[] => {
-    const printResult = [];
-    let currentNode = head;
-    while (currentNode) {
-        printResult.push(currentNode.value);
-        currentNode = currentNode.next;
-    }
-
-    return printResult;
-};
-
 const reverseBetween = (
     head: SinglyNode<number> | null,
     left: number,
@@ -50,5 +39,4 @@ const reverseBetween = (
 const linkedList = new LinkedList<number>(1);
 linkedList.append(2, 3, 4, 5);
 
-const resversedHead = reverseBetween(linkedList.getHead(), 2, 4);
-console.log(printList(resversedHead));
+reverseBetween(linkedList.getHead(), 2, 4);

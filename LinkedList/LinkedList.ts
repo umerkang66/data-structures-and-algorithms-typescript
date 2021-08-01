@@ -158,4 +158,15 @@ class LinkedList<T> {
     }
 }
 
+export const printList = (head: Node<number> | null): number[] => {
+    const printResult = [];
+    let currentNode = head;
+    while (currentNode) {
+        printResult.push(currentNode.value);
+        currentNode = currentNode.next;
+    }
+
+    return printResult;
+};
+
 export default LinkedList;
