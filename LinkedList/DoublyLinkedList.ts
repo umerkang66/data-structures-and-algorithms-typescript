@@ -82,19 +82,19 @@ class DoublyLinkedList<T> {
   }
 
   public insert(index: number, value: T): DoublyLinkedList<T> {
-    // IF THE INDEX IS MORE THAN THE LENGTH OF THE LINKED LIST, THEN ADD TO THE END OF THE LINKED LIST
+    // If the index is more than the length of the linked list, then add to the end of the linked list
     if (index >= this.length) return this.append(value);
 
-    // IF INDEX IS ZERO THEN ADD TO THE FIRST OF ARRAY
+    // If index is zero then add to the first of array
     if (index === 0) return this.prepend(value);
 
-    // DEALING WITH REMAINING CASES
+    // Dealing with remaining cases
     const newNode = new DoublyNode(value);
     const previousNode = this.traverseToIndex(index - 1);
     if (!previousNode) return this;
     const nextNode = previousNode.next;
 
-    // INSERTING
+    // Inserting
     previousNode.next = newNode;
     newNode.previous = previousNode;
     newNode.next = nextNode;
@@ -105,10 +105,10 @@ class DoublyLinkedList<T> {
   }
 
   public remove(index: number): DoublyLinkedList<T> {
-    // IF INDEX IS MORE THAN OR EQUAL TO LENGTH THEN RETURN
+    // If index is more than or equal to length then return
     if (index >= this.length) return this;
 
-    // IF INDEX IS ZERO REMOVE THE FIRST ELEMENT IN LINKED LIST
+    // If index is zero remove the first element in linked list
     if (index === 0) {
       const currentNode = this.head;
       if (!currentNode) return this;
@@ -122,7 +122,7 @@ class DoublyLinkedList<T> {
       return this;
     }
 
-    // IF REMOVING THE LAST ELEMENT
+    // If removing the last element
     if (index === this.length - 1) {
       const currentNode = this.tail;
       const previousPointer = currentNode?.previous;
@@ -135,14 +135,14 @@ class DoublyLinkedList<T> {
       return this;
     }
 
-    // DEALING WITH THE REMAINING CASES
+    // Dealing with the remaining cases
     const previousPointer = this.traverseToIndex(index - 1);
     if (!previousPointer) return this;
 
     const nextPointer = previousPointer.next?.next;
     if (!nextPointer) return this;
 
-    // REMOVING
+    // Removing
     previousPointer.next = nextPointer;
     nextPointer.previous = previousPointer;
     this.length--;
