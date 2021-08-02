@@ -31,11 +31,11 @@ const cycleDetection = (head: Head): Head => {
   }
 
   let pointer1 = head;
-  let pointer2 = tortoise;
+  let pointer2: Head = tortoise;
 
   while (pointer1 !== pointer2) {
-    pointer1 = pointer1.next;
-    pointer2 = pointer2.next;
+    if (pointer1) pointer1 = pointer1.next;
+    if (pointer2) pointer2 = pointer2.next;
   }
 
   return pointer1;
