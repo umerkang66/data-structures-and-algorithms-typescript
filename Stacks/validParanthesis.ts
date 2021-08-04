@@ -4,11 +4,7 @@ interface Parens {
   [key: string]: string;
 }
 
-const parens: Parens = {
-  '(': ')',
-  '{': '}',
-  '[': ']',
-};
+const parens: Parens = { '(': ')', '{': '}', '[': ']' };
 
 const validParenthesis = (str: string): boolean => {
   if (str.length === 0) return true;
