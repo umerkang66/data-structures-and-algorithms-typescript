@@ -2,7 +2,7 @@ const str = 'a)b(c)d';
 
 const minimumBracketsToRemove = (str: string) => {
   const res = str.split('');
-  const stack = [];
+  const stack: number[] = [];
 
   for (let i = 0; i < res.length; i++) {
     if (res[i] === '(') stack.push(i);
