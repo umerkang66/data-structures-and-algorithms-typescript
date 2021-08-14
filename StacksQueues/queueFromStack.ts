@@ -1,12 +1,13 @@
-class QueueWithStacks<T> {
+class QueueFromStacks<T> {
   in: T[] = [];
   out: T[] = [];
 
-  enqueue(val: T) {
+  enqueue(val: T): QueueFromStacks<T> {
     this.in.push(val);
+    return this;
   }
 
-  dequeue() {
+  dequeue(): T | undefined {
     if (this.out.length === 0) {
       while (this.in.length > 0) {
         const removedVal = this.in.pop();
@@ -17,7 +18,7 @@ class QueueWithStacks<T> {
     return this.out.pop();
   }
 
-  peek() {
+  peek(): T {
     if (this.out.length === 0) {
       while (this.in.length > 0) {
         const removedVal = this.in.pop();
@@ -28,7 +29,7 @@ class QueueWithStacks<T> {
     return this.out[this.out.length - 1];
   }
 
-  empty() {
+  empty(): boolean {
     return this.in.length === 0 && this.out.length === 0;
   }
 }
