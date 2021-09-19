@@ -28,6 +28,7 @@ const twoSum = (numsArr: number[], target: number): number[] => {
   interface SumObj {
     [index: number]: number;
   }
+
   const sumObj: SumObj = {};
 
   for (let i = 0; i < numsArr.length; i++) {
