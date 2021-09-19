@@ -24,12 +24,17 @@ const cycleDetection = (head: Head): Head => {
   while (true) {
     if (hare) hare = hare.next;
     if (tortoise) tortoise = tortoise.next;
-    if (hare === null || hare.next === null) return null;
-    else hare = hare.next;
+
+    if (hare === null || hare.next === null) {
+      return null;
+    } else {
+      hare = hare.next;
+    }
 
     if (hare === tortoise) break;
   }
 
+  // This logic is done to get from where the cycle starts
   let pointer1 = head;
   let pointer2: Head = tortoise;
 
