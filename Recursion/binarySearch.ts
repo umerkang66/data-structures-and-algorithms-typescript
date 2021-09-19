@@ -9,6 +9,9 @@ const binarySearch = (
   const mid = Math.floor((left + right) / 2);
   if (nums[mid] === search) return mid;
 
-  if (search <= nums[mid]) return binarySearch(nums, left, mid - 1, search);
-  else return binarySearch(nums, mid + 1, right, search);
+  if (search < nums[mid]) {
+    return binarySearch(nums, left, mid - 1, search);
+  } else {
+    return binarySearch(nums, mid + 1, right, search);
+  }
 };
