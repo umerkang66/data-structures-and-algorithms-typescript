@@ -124,7 +124,7 @@ class LinkedList<T> {
     return this;
   }
 
-  public traverseToIndex(index: number): Node<T> | null {
+  private traverseToIndex(index: number): Node<T> | null {
     let counter = 0;
     let currentNode = this.head;
 

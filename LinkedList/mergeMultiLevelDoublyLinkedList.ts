@@ -16,11 +16,10 @@ const mergeMultiLevelDoubLyLinkedList = (
   head: ListNode<number> | null
 ): ListNode<number> | null => {
   if (!head) return head;
-  let currentNode = head;
+  let currentNode: ListNode<number> | null = head;
 
   while (currentNode) {
     if (currentNode.child === null) {
-      // @ts-ignore
       currentNode = currentNode.next;
     } else {
       let tail = currentNode.child;

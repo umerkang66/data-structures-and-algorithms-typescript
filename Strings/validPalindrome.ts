@@ -20,8 +20,11 @@ validPalindrome('aabbaa');
 validPalindrome('a');
 
 // ALMOST PALINDROME
-// prettier-ignore
-const validSubPalindrome = (str: string, left: number, right: number):boolean => {
+const validSubPalindrome = (
+  str: string,
+  left: number,
+  right: number
+): boolean => {
   while (left < right) {
     if (str[left] !== str[right]) return false;
     left++;
