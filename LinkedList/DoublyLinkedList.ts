@@ -172,7 +172,7 @@ class DoublyLinkedList<T> {
     return this;
   }
 
-  public traverseToIndex(index: number): DoublyNode<T> | null {
+  private traverseToIndex(index: number): DoublyNode<T> | null {
     let counter = 0;
     let currentNode = this.head;
     while (counter !== index) {
