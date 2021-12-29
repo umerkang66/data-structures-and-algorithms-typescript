@@ -24,7 +24,8 @@ const isTypedOutStringsEqualBruteForce = (
   else return false;
 };
 
-isTypedOutStringsEqualBruteForce(str1, str2);
+const typedOutStringsBruteForce = isTypedOutStringsEqualBruteForce(str1, str2);
+console.log(typedOutStringsBruteForce);
 
 // EXPLANATION: We have written an if else block, in the if block we only deals with the case if there are hashes in strings and move the pointers accordingly, if there is 1 hashe the pointer will move 2 times, if there are 2 hashes the pointer will move 4 times. Then after the if block we deals with checking if the two strings are equal and we also move the normal pointers backwards without the influence of hashes
 const isTypedOutStrings = (str1: string, str2: string): boolean => {
@@ -64,4 +65,5 @@ const isTypedOutStrings = (str1: string, str2: string): boolean => {
   return true;
 };
 
-isTypedOutStrings(str1, str2);
+const typedOutStrings = isTypedOutStrings(str1, str2);
+console.log(typedOutStrings);
