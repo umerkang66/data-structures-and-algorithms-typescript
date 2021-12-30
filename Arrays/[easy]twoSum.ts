@@ -20,11 +20,11 @@ const twoSumBruteForce = (numsArr: number[], target: number) => {
 console.log(twoSumBruteForce(numsArr, target));
 console.log(twoSumBruteForce(numsArr2, target2));
 
-// In the sumHash the number will be key, and the index will be value
-const twoSum2 = (nums: number[], target: number): number[] => {
+const twoSum = (nums: number[], target: number): number[] => {
   interface SumHash {
     [index: number]: number;
   }
+  // In the sumHash the number will be key, and the index will be value
   const sumHash: SumHash = {};
   for (let i = 0; i < nums.length; i++) {
     // We are checking arrayValues with zero because indexes are stored as value, and arrayValues are stored as keys, if the below (if answer) is less than zero, it means the answer does not exist in array
@@ -39,5 +39,5 @@ const twoSum2 = (nums: number[], target: number): number[] => {
   return [];
 };
 
-console.log(twoSum2(numsArr, target));
-console.log(twoSum2(numsArr2, target2));
+console.log(twoSum(numsArr, target));
+console.log(twoSum(numsArr2, target2));
