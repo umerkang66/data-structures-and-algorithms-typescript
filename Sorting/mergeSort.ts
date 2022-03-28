@@ -1,4 +1,4 @@
-// donot use merge sort if you are worried about memory. use it when the items are very large and you don't care about memory
+// dont use merge sort if you are worried about memory. use it when the items are very large and you don't care about memory
 const merge = (
   data: number[],
   start: number,
@@ -41,7 +41,7 @@ const merge = (
 
   // Adding the values from newData array into the data array that was passed into the function, basically add the subarray
   // EXPLANATION: If the start is at 12 so we will add the i - start i.e. 12 - 12 = 0, so we will add the value of newData index at 0 into data at 12th index, similarly it goes on and on, then the i will become 13 in the next iteration of for loop then in the 13th index of data array, i - start i.e. 13 - 12 = 1, 1th value of newData array.
-  for (i = start; i <= end; i++) {
+  for (let i = start; i <= end; i++) {
     data[i] = newData[i - start];
   }
 };
@@ -54,3 +54,7 @@ const mergeSort = (data: number[], start: number, end: number): void => {
     merge(data, start, mid, end);
   }
 };
+
+const nums = [55, 3, 44, 12, 45, 99, 32, 1, 5];
+mergeSort(nums, 0, nums.length - 1);
+console.log(nums);
