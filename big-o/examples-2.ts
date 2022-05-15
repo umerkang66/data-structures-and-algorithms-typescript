@@ -72,3 +72,22 @@ function containCommonItems2(arr1: string[], arr2: string[]): boolean {
 }
 
 console.log(containCommonItems2(['a', 'b', 'c', 'x'], ['z', 'y', 'a']));
+
+const twoSum = (nums: number[], target: number): number[] => {
+  interface NumsHash {
+    [key: number]: number;
+  }
+  const numsHash: NumsHash = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    if (target - nums[i] in numsHash) {
+      return [numsHash[target - nums[i]], i];
+    } else {
+      numsHash[nums[i]] = i;
+    }
+  }
+
+  return [];
+};
+
+console.log(twoSum([2, 7, 11, 15], 9));
