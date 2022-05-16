@@ -1,15 +1,11 @@
-/**
- * Custom implementation of array.
- * With common operations already built in
- */
 export class CustomArray<T> {
   public length: number = 0;
   public data: { [key: number]: T } = {};
 
   /**
    * Get element at provided index.
-   * @param index Get element at provided index
-   * @returns Item at provided index
+   * @param {number} index Get element at provided index
+   * @returns {T} Item at provided index
    */
   public get(index: number): T {
     if (index >= this.length) {
@@ -21,9 +17,9 @@ export class CustomArray<T> {
 
   /**
    * Add elements in array.
-   * @param item Item to add in array
-   * @param otherItems Other items to add in array using rest operator
-   * @returns CustomArray
+   * @param {T} item Item to add in array
+   * @param {Array<T>} otherItems Other items to add in array using rest operator
+   * @returns {CustomArray<T>} CustomArray
    */
   public push(item: T, ...otherItems: T[]): CustomArray<T> {
     this.data[this.length] = item;
@@ -41,7 +37,7 @@ export class CustomArray<T> {
 
   /**
    * Removes the last element from an array and returns it.
-   * @returns Last element in array
+   * @returns {T | undefined} Last element in array
    */
   public pop(): T | undefined {
     if (!this.length) {
@@ -57,7 +53,7 @@ export class CustomArray<T> {
 
   /**
    * Removes the element at provided index from an array and returns it.
-   * @returns Element at index in array
+   * @returns {T} Element at index in array
    */
   public delete(index: number): T {
     if (index >= this.length) {
@@ -71,7 +67,7 @@ export class CustomArray<T> {
 
   /**
    * Shift the array from the index provided to the end of array
-   * @param index Index from where the shifting should begins
+   * @param {number} index Index from where the shifting should begins
    */
   private shiftItems(index: number): void {
     for (let i = index; i < this.length - 1; i++) {
