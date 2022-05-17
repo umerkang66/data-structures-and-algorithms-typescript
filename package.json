@@ -9,7 +9,9 @@
     "dev:hash-tables": "nodemon hash-tables/index.ts"
   },
   "devDependencies": {
+    "@types/jest": "^27.5.1",
     "nodemon": "^2.0.16",
+    "ts-jest": "^28.0.2",
     "ts-node": "^10.7.0"
   },
   "author": "Umer Kang",
