@@ -1,0 +1,17 @@
+{
+  "name": "data-structures-and-algorithms-typescript",
+  "version": "1.0.0",
+  "description": "Data Structure and Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "dev:arrays": "nodemon arrays/index.ts",
+    "dev:big-o": "nodemon big-o/index.ts",
+    "dev:hash-tables": "nodemon hash-tables/index.ts"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0"
+  },
+  "author": "Umer Kang",
+  "license": "ISC"
+}
