@@ -87,5 +87,3 @@ export function pyramidRecursive2(
   // change colStart and colEnd only when row is changed
   pyramidRecursive2(n, row + 1, 1, --colStart, ++colEnd, '');
 }
-
-pyramidRecursive2(4);
