@@ -1,4 +1,4 @@
-const Stack = require('./index');
+import { Stack } from './index';
 
 test('Stack is a class', () => {
   expect(typeof Stack.prototype.constructor).toEqual('function');

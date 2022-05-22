@@ -1,18 +1,18 @@
-const Queue = require('./index');
+import { QueueFromStack as Queue } from './index';
 
 test('Queue is a class', () => {
   expect(typeof Queue.prototype.constructor).toEqual('function');
 });
 
 test('can add elements to a queue', () => {
-  const q = new Queue();
+  const q = new Queue<number>();
   expect(() => {
     q.add(1);
   }).not.toThrow();
 });
 
 test('can remove elements from a queue', () => {
-  const q = new Queue();
+  const q = new Queue<number>();
   expect(() => {
     q.add(1);
     q.remove();
@@ -20,7 +20,7 @@ test('can remove elements from a queue', () => {
 });
 
 test('Order of elements is maintained', () => {
-  const q = new Queue();
+  const q = new Queue<number>();
   q.add(1);
   q.add(2);
   q.add(3);
@@ -28,4 +28,14 @@ test('Order of elements is maintained', () => {
   expect(q.remove()).toEqual(2);
   expect(q.remove()).toEqual(3);
   expect(q.remove()).toEqual(undefined);
+});
+
+test('peek returns, but does not remove, the first value', () => {
+  const q = new Queue<number>();
+  q.add(1);
+  q.add(2);
+  expect(q.peek()).toEqual(1);
+  expect(q.peek()).toEqual(1);
+  expect(q.remove()).toEqual(1);
+  expect(q.remove()).toEqual(2);
 });
