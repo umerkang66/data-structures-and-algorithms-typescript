@@ -1,7 +1,5 @@
-const midpoint = require('./index');
-const L = require('./linkedlist');
-const Node = L.Node;
-const LinkedList = L.LinkedList;
+import { midpoint, midpoint2 } from './index';
+import { LinkedList, Node } from './linked-list';
 
 test('Midpoint is a function', () => {
   expect(typeof midpoint).toEqual('function');
@@ -9,38 +7,42 @@ test('Midpoint is a function', () => {
 
 describe('Midpoint returns the middle node of an odd numbered list', () => {
   test('when the list has 3 elements', () => {
-    const l = new LinkedList();
+    const l = new LinkedList<string>();
     l.insertLast('a');
     l.insertLast('b');
     l.insertLast('c');
-    expect(midpoint(l).data).toEqual('b');
+    expect(midpoint(l)?.data).toEqual('b');
+    expect(midpoint2(l)?.data).toEqual('b');
   });
 
   test('when the list has 5 elements', () => {
-    const l = new LinkedList();
+    const l = new LinkedList<string>();
     l.insertLast('a');
     l.insertLast('b');
     l.insertLast('c');
     l.insertLast('d');
     l.insertLast('e');
-    expect(midpoint(l).data).toEqual('c');
+    expect(midpoint(l)?.data).toEqual('c');
+    expect(midpoint2(l)?.data).toEqual('c');
   });
 });
 
 describe('Midpoint returns the middle node of an even numbered list', () => {
   test('when the list has 2 elements', () => {
-    const l = new LinkedList();
+    const l = new LinkedList<string>();
     l.insertLast('a');
     l.insertLast('b');
-    expect(midpoint(l).data).toEqual('a');
+    expect(midpoint(l)?.data).toEqual('a');
+    expect(midpoint2(l)?.data).toEqual('a');
   });
 
   test('when the list has 4 elements', () => {
-    const l = new LinkedList();
+    const l = new LinkedList<string>();
     l.insertLast('a');
     l.insertLast('b');
     l.insertLast('c');
     l.insertLast('d');
-    expect(midpoint(l).data).toEqual('b');
+    expect(midpoint(l)?.data).toEqual('b');
+    expect(midpoint2(l)?.data).toEqual('b');
   });
 });
