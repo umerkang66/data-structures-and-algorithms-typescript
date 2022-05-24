@@ -1,5 +1,5 @@
 import { midpoint, midpoint2 } from './index';
-import { LinkedList, Node } from './linked-list';
+import { LinkedList } from './linked-list';
 
 test('Midpoint is a function', () => {
   expect(typeof midpoint).toEqual('function');
@@ -11,8 +11,8 @@ describe('Midpoint returns the middle node of an odd numbered list', () => {
     l.insertLast('a');
     l.insertLast('b');
     l.insertLast('c');
-    expect(midpoint(l)?.data).toEqual('b');
-    expect(midpoint2(l)?.data).toEqual('b');
+    expect(midpoint<string>(l)?.data).toEqual('b');
+    expect(midpoint2<string>(l)?.data).toEqual('b');
   });
 
   test('when the list has 5 elements', () => {
@@ -22,8 +22,8 @@ describe('Midpoint returns the middle node of an odd numbered list', () => {
     l.insertLast('c');
     l.insertLast('d');
     l.insertLast('e');
-    expect(midpoint(l)?.data).toEqual('c');
-    expect(midpoint2(l)?.data).toEqual('c');
+    expect(midpoint<string>(l)?.data).toEqual('c');
+    expect(midpoint2<string>(l)?.data).toEqual('c');
   });
 });
 
@@ -32,8 +32,8 @@ describe('Midpoint returns the middle node of an even numbered list', () => {
     const l = new LinkedList<string>();
     l.insertLast('a');
     l.insertLast('b');
-    expect(midpoint(l)?.data).toEqual('a');
-    expect(midpoint2(l)?.data).toEqual('a');
+    expect(midpoint<string>(l)?.data).toEqual('a');
+    expect(midpoint2<string>(l)?.data).toEqual('a');
   });
 
   test('when the list has 4 elements', () => {
@@ -42,7 +42,7 @@ describe('Midpoint returns the middle node of an even numbered list', () => {
     l.insertLast('b');
     l.insertLast('c');
     l.insertLast('d');
-    expect(midpoint(l)?.data).toEqual('b');
-    expect(midpoint2(l)?.data).toEqual('b');
+    expect(midpoint<string>(l)?.data).toEqual('b');
+    expect(midpoint2<string>(l)?.data).toEqual('b');
   });
 });
