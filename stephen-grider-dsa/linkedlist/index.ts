@@ -166,7 +166,7 @@ export class LinkedList<T> {
     }
   }
 
-  public *[Symbol.iterator]() {
+  public *[Symbol.iterator](): IterableIterator<Node<T>> {
     let node = this.head;
     while (node) {
       yield node;
