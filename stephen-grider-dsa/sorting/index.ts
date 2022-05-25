@@ -53,10 +53,10 @@ export function mergeSort(arr: number[]): number[] {
 
   const mid = Math.floor(arr.length / 2);
 
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid, arr.length));
-
-  return merge(left, right);
+  return merge(
+    mergeSort(arr.slice(0, mid)),
+    mergeSort(arr.slice(mid, arr.length))
+  );
 }
 
 export function merge(left: number[], right: number[]): number[] {
