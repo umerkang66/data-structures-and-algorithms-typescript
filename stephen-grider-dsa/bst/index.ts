@@ -23,6 +23,7 @@ export class Node<T extends number | string> {
     else if (data > root.data) root.right = newNode;
   }
 
+  // not work
   public insertRecursive(data: T, root: Node<T> | null = this): void {
     if (root && (root.left || root.right)) {
       if (data < root.data && !root.left) {
