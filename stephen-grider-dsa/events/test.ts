@@ -1,4 +1,4 @@
-const Events = require('./index');
+import { Events } from './index';
 
 test('Events can be registered then triggered', () => {
   const events = new Events();
