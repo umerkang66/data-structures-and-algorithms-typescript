@@ -1,5 +1,5 @@
-import { mergeSortedArrays } from '../questions/merge-sorted-arrays';
-import { reverseStr } from '../questions/reverse-a-string';
+import { mergeSortedArrays } from '../questions';
+import { reverseStr } from '../questions';
 
 test('can merge sorted arrays', () => {
   // merge-sorted-array.ts
@@ -11,7 +11,7 @@ test('can merge sorted arrays', () => {
 });
 
 test('can reverse a string', () => {
-  // reverse-a-string
+  // reverse-a-string.ts
   const str = 'abc d';
   const str2 = 'equal';
   expect(reverseStr(str)).toBe('d cba');

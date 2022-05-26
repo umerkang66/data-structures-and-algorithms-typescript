@@ -19,7 +19,7 @@ export class CustomHashTable {
    * @param {string} key Key for hash table value to be hashed
    * @returns {number} Hash value for key
    */
-  private _hash(key: string): number {
+  public _hash(key: string): number {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
       hash = (hash + key.charCodeAt(i) * i) % this.data.length;
