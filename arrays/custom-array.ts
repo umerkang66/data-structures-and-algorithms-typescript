@@ -69,7 +69,7 @@ export class CustomArray<T> {
    * Shift the array from the index provided to the end of array
    * @param {number} index Index from where the shifting should begins
    */
-  private shiftItems(index: number): void {
+  public shiftItems(index: number): void {
     for (let i = index; i < this.length - 1; i++) {
       this.data[i] = this.data[i + 1];
     }
