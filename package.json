@@ -8,7 +8,9 @@
     "test:arrays": "jest arrays --watch",
     "dev:big-o": "nodemon big-o/index.ts",
     "dev:hash-tables": "nodemon hash-tables/index.ts",
-    "test:hash-tables": "jest hash-tables --watch"
+    "test:hash-tables": "jest hash-tables --watch",
+    "dev:linked-list": "nodemon linked-lists/index.ts",
+    "test:linked-list": "jest linked-lists --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
