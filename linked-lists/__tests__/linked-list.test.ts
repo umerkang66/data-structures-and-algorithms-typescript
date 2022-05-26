@@ -44,6 +44,7 @@ test('can insert items at right index', () => {
   linkedList.insert(0, 1);
   linkedList.insert(5, 6);
   expect(linkedList.printList()).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  expect(linkedList.tail?.value).toBe(8);
 
   linkedList.insert(20, 9);
   expect(linkedList.printList()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -68,6 +69,7 @@ test('can remove at given index', () => {
   linkedList.remove(20);
 
   expect(linkedList.printList()).toEqual([3, 4, 5, 8, 9]);
+  expect(linkedList.tail?.value).toBe(9);
   expect(linkedList.remove(0)?.value).toBe(3);
 
   // return null if linked list is empty
