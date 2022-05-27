@@ -12,13 +12,17 @@ export function reverseLinkedList<T>(
 
   let prev: LinkedListNode<T> | null = null;
   let curr: LinkedListNode<T> | null = head;
-  let next = curr && curr.next;
+  // let next = curr && curr.next;
 
   while (curr) {
+    // in last don't need to update the next, because that will automatically be updated in next loop
+    let next: LinkedListNode<T> | null = curr.next;
+
+    // curr should point to the previous element
     curr.next = prev;
+    // update
     prev = curr;
     curr = next;
-    next = curr && curr.next;
   }
 
   return prev;
