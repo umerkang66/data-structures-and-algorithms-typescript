@@ -76,3 +76,39 @@ test('can remove at given index', () => {
   const emptyList = new LinkedList<number>();
   expect(emptyList.remove(0)).toBeNull();
 });
+
+describe('Reverse a Linked List', () => {
+  test('returns null if list is empty', () => {
+    const list = new LinkedList<number>();
+    list.reverse();
+
+    expect(list.head).toBeNull();
+  });
+
+  test('can reverse a linked list with only one item', () => {
+    const list = new LinkedList<number>();
+    list.append(1);
+
+    expect(list.head?.value).toBe(1);
+    expect(list.head?.next).toBeNull();
+  });
+
+  test('can reverse a linked list with many items', () => {
+    const list = new LinkedList<number>();
+    list.append(1, 2, 3, 4);
+    list.reverse();
+
+    if (
+      list.head &&
+      list.head.next &&
+      list.head.next.next &&
+      list.head.next.next.next
+    ) {
+      expect(list.head.value).toBe(4);
+      expect(list.head.next.value).toBe(3);
+      expect(list.head.next.next.value).toBe(2);
+      expect(list.head.next.next.next.value).toBe(1);
+      expect(list.head.next.next.next.next).toBeNull();
+    }
+  });
+});
