@@ -43,19 +43,16 @@ export class StackLinkedList<T> {
       return this;
     }
 
-    let currentNode = this.bottom;
-    while (currentNode && currentNode.next) {
-      currentNode = currentNode.next;
-    }
-    if (currentNode) {
-      currentNode.next = newNode;
+    if (this.top) {
+      this.top.next = newNode;
       this.top = newNode;
       this.length++;
     }
+
     return this;
   }
 
-  public pop(): StackLinkedListNode<T> | null {
+  public pop(): T | null {
     if (!this.bottom) return null;
     const lastItem = this.top;
 
@@ -69,7 +66,7 @@ export class StackLinkedList<T> {
       this.bottom = null;
       this.top = null;
       this.length--;
-      return currentNode;
+      return currentNode.value;
     }
     // if there are more than one elements
     if (currentNode && currentNode.next) {
@@ -78,10 +75,14 @@ export class StackLinkedList<T> {
 
     this.top = currentNode;
     this.length--;
-    return lastItem;
+    if (lastItem) return lastItem.value;
+    return null;
   }
 
-  public peek(): StackLinkedListNode<T> | null {
-    return this.top;
+  public peek(): T | null {
+    if (this.top) {
+      return this.top.value;
+    }
+    return null;
   }
 }

@@ -11,8 +11,8 @@
     "test:hash-tables": "jest hash-tables --watch",
     "dev:linked-list": "nodemon linked-lists/index.ts",
     "test:linked-list": "jest linked-lists --watch",
-    "dev:stack-and-queue": "nodemon stacks-and-queues/index.ts",
-    "test:stack-and-queue": "jest stacks-and-queues --watch"
+    "dev:stacks-and-queues": "nodemon stacks-and-queues/index.ts",
+    "test:stacks-and-queues": "jest stacks-and-queues --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",

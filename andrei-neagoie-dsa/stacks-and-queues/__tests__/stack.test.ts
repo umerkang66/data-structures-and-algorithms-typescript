@@ -34,10 +34,10 @@ describe('Linked list stack', () => {
     stack.push(1).push(2).push(3);
 
     expect(stack.length).toBe(3);
-    expect(stack.peek()?.value).toBe(3);
-    expect(stack.pop()?.value).toBe(3);
-    expect(stack.pop()?.value).toBe(2);
-    expect(stack.pop()?.value).toBe(1);
+    expect(stack.peek()).toBe(3);
+    expect(stack.pop()).toBe(3);
+    expect(stack.pop()).toBe(2);
+    expect(stack.pop()).toBe(1);
     expect(stack.pop()).toBeNull();
   });
 });
