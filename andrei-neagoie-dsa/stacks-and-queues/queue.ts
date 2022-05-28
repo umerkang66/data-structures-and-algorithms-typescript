@@ -30,6 +30,10 @@ export class Queue<T> {
   public dequeue(): T | null {
     if (!this.first) return null;
     const firstItem = this.first.value;
+
+    if (this.first === this.last) {
+      this.last = null;
+    }
     this.first = this.first.next;
     this.length--;
 

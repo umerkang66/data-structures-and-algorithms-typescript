@@ -1,7 +1,7 @@
-import { Queue } from '../queue';
+import { QueueFromStack } from '../questions/queue-from-stack';
 
-test('can add and remove item from queue', () => {
-  const queue = new Queue<number>();
+test('queue from stack', () => {
+  const queue = new QueueFromStack<number>();
   queue.enqueue(1).enqueue(2).enqueue(3);
 
   expect(queue.peek()).toBe(1);
