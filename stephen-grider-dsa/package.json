@@ -1,0 +1,26 @@
+{
+  "name": "data-structures-and-algorithms-typescript",
+  "version": "1.0.0",
+  "description": "Data Structure and Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "dev:arrays": "nodemon arrays/index.ts",
+    "test:arrays": "jest arrays --watch",
+    "dev:big-o": "nodemon big-o/index.ts",
+    "dev:hash-tables": "nodemon hash-tables/index.ts",
+    "test:hash-tables": "jest hash-tables --watch",
+    "dev:linked-list": "nodemon linked-lists/index.ts",
+    "test:linked-list": "jest linked-lists --watch",
+    "dev:stack-and-queue": "nodemon stacks-and-queues/index.ts",
+    "test:stack-and-queue": "jest stacks-and-queues --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0"
+  },
+  "author": "Umer Kang",
+  "license": "ISC"
+}
