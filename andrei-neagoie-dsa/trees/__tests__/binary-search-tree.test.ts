@@ -57,11 +57,11 @@ test('can delete items from bst', () => {
   tree.insert(9).insert(4).insert(3).insert(5).insert(8).insert(10);
 
   expect(tree.remove(11)).toBeNull();
-  expect(tree.remove(6)).not.toBeNull();
-  expect(tree.remove(9)).not.toBeNull();
-  expect(tree.remove(4)).not.toBeNull();
-  expect(tree.remove(3)).not.toBeNull();
-  expect(tree.remove(5)).not.toBeNull();
-  expect(tree.remove(8)).not.toBeNull();
-  expect(tree.remove(10)).not.toBeNull();
+  expect(tree.remove(6)?.value).toBe(6);
+  expect(tree.remove(9)?.value).toBe(9);
+  expect(tree.remove(4)?.value).toBe(4);
+  expect(tree.remove(3)?.value).toBe(3);
+  expect(tree.remove(5)?.value).toBe(5);
+  expect(tree.remove(8)?.value).toBe(8);
+  expect(tree.remove(10)?.value).toBe(10);
 });
