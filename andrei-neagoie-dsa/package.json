@@ -12,7 +12,9 @@
     "dev:linked-list": "nodemon linked-lists/index.ts",
     "test:linked-list": "jest linked-lists --watch",
     "dev:stacks-and-queues": "nodemon stacks-and-queues/index.ts",
-    "test:stacks-and-queues": "jest stacks-and-queues --watch"
+    "test:stacks-and-queues": "jest stacks-and-queues --watch",
+    "dev:trees": "nodemon trees/index.ts",
+    "test:trees": "jest trees --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
