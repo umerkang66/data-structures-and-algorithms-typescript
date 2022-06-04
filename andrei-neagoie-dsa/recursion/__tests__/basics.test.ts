@@ -1,5 +1,6 @@
 import { factorial, factorialRecursive } from '../basics/factorial';
 import { fibonacci, fibonacciRecursive } from '../basics/fibonacci';
+import { reverseString } from '../basics/reverse-string';
 
 test('can return correct FACTORIAL', () => {
   expect(factorial(3)).toBe(6);
@@ -33,4 +34,10 @@ test('cn return correct FIBONACCI no.', () => {
   expect(fibonacciRecursive(6)).toBe(8);
   expect(fibonacciRecursive(7)).toBe(13);
   expect(fibonacciRecursive(8)).toBe(21);
+});
+
+test('can REVERSE a string', () => {
+  expect(reverseString('abc')).toBe('cba');
+  expect(reverseString('ab')).toBe('ba');
+  expect(reverseString('a')).toBe('a');
 });
