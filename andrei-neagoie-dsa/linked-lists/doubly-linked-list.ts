@@ -110,8 +110,7 @@ export class DoublyLinkedList<T> {
     }
 
     // add to the end of list, this will automatically increase the length
-    this.append(data);
-    return this;
+    return this.append(data);
   }
 
   public remove(index: number): DoublyLinkedListNode<T> | null {
