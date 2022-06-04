@@ -1,10 +1,12 @@
-export class BinarySearchTreeNode<T extends number> {
+type BinarySearchAble = number | string;
+
+export class BinarySearchTreeNode<T extends BinarySearchAble> {
   public left: BinarySearchTreeNode<T> | null = null;
   public right: BinarySearchTreeNode<T> | null = null;
   constructor(public value: T) {}
 }
 
-export class BinarySearchTree<T extends number> {
+export class BinarySearchTree<T extends BinarySearchAble> {
   private root: BinarySearchTreeNode<T> | null = null;
 
   constructor(value: T) {
