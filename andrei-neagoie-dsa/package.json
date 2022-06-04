@@ -14,7 +14,9 @@
     "dev:stacks-and-queues": "nodemon stacks-and-queues/index.ts",
     "test:stacks-and-queues": "jest stacks-and-queues --watch",
     "dev:trees": "nodemon trees/index.ts",
-    "test:trees": "jest trees --watch"
+    "test:trees": "jest trees --watch",
+    "dev:graphs": "nodemon graphs/index.ts",
+    "test:graphs": "jest graphs --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
