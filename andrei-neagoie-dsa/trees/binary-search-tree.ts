@@ -208,3 +208,19 @@ export class BinarySearchTree<T extends BinarySearchAble> {
     return null;
   }
 }
+
+export function traverse<T extends number | string>(
+  node: BinarySearchTreeNode<T> | null
+): BinarySearchTreeNode<T> | null {
+  if (!node) {
+    return null;
+  }
+  const tree: BinarySearchTreeNode<T> = {
+    value: node.value,
+    left: null,
+    right: null,
+  };
+  tree.left = node.left === null ? null : traverse(node.left);
+  tree.right = node.right === null ? null : traverse(node.right);
+  return tree;
+}
