@@ -108,7 +108,7 @@ describe('Merge Sort, Same Arr', () => {
   });
 });
 
-describe('Quick Sort, Same Arr', () => {
+describe('Quick Sort', () => {
   test('can sort properly with more than one items', () => {
     let nums = [3, 2, 9, 4, 10, 1];
     quickSort(nums);

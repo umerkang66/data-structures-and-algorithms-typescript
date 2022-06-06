@@ -4,21 +4,23 @@
 export function quickSort(
   nums: number[],
   start: number = 0,
+  // not the length, but last element index
   end: number = nums.length - 1
 ): void {
   if (start >= end) {
     return;
   }
 
-  let pivot = end;
-  let partitionIndex = getPartition(nums, end, start, end);
+  const pivot = end;
+  // this will put pivot at its correct index, and return the partitionIndex, where now pivot is
+  const partitionIndex = partition(nums, pivot, start, end);
 
   quickSort(nums, start, partitionIndex - 1);
   quickSort(nums, partitionIndex + 1, end);
 }
 
 // find the partition index, and get the pivot at partitionIndex, left side to the partition index elements should be lower than pivot, and on the right side, elements should be higher
-function getPartition(
+function partition(
   nums: number[],
   pivot: number,
   start: number,
@@ -35,8 +37,9 @@ function getPartition(
     }
   }
 
-  // now bigger elements are before pivot, so move the pivot to its right position, and move the bigger elements to the "right"
+  // now bigger elements are before pivot, so just move the pivot one point to its right position, and move the bigger element to the "right"
   swap(nums, pivot, partitionIndex);
+  // now where pivot element lies, partition element lies at the same place
   return partitionIndex;
 }
 
