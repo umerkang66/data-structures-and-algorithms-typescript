@@ -20,7 +20,9 @@
     "dev:recursion": "nodemon recursion/index.ts",
     "test:recursion": "jest recursion --watch",
     "dev:sorting": "nodemon sorting/index.ts",
-    "test:sorting": "jest sorting --watch"
+    "test:sorting": "jest sorting --watch",
+    "dev:searching": "nodemon searching/index.ts",
+    "test:searching": "jest searching --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
