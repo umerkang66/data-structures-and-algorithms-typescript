@@ -2,42 +2,41 @@
 // Space complexity is O(log (n))
 
 export function quickSort(
-  array: number[],
-  left: number = 0,
-  right: number = array.length - 1
-) {
-  let pivot;
-  let partitionIndex;
-
-  if (left < right) {
-    pivot = right;
-    partitionIndex = partition(array, pivot, left, right);
-
-    //sort left and right
-    quickSort(array, left, partitionIndex - 1);
-    quickSort(array, partitionIndex + 1, right);
+  nums: number[],
+  start: number = 0,
+  end: number = nums.length - 1
+): void {
+  if (start >= end) {
+    return;
   }
 
-  return array;
+  let pivot = end;
+  let partitionIndex = getPartition(nums, end, start, end);
+
+  quickSort(nums, start, partitionIndex - 1);
+  quickSort(nums, partitionIndex + 1, end);
 }
 
-function partition(
-  array: number[],
+// find the partition index, and get the pivot at partitionIndex, left side to the partition index elements should be lower than pivot, and on the right side, elements should be higher
+function getPartition(
+  nums: number[],
   pivot: number,
-  left: number,
-  right: number
-) {
-  let pivotValue = array[pivot];
-  let partitionIndex = left;
+  start: number,
+  end: number
+): number {
+  let partitionIndex = start;
 
-  for (let i = left; i < right; i++) {
-    if (array[i] < pivotValue) {
-      swap(array, i, partitionIndex);
+  for (let i = start; i < end; i++) {
+    // don't include the last element pivot (in current stage)
+    if (nums[i] < nums[pivot]) {
+      // if ith element is bigger, the i will move forward, but partitionIndex doesn't, at the end, bigger elements should be before the pivot
+      swap(nums, i, partitionIndex);
       partitionIndex++;
     }
   }
 
-  swap(array, right, partitionIndex);
+  // now bigger elements are before pivot, so move the pivot to its right position, and move the bigger elements to the "right"
+  swap(nums, pivot, partitionIndex);
   return partitionIndex;
 }
 
