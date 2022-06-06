@@ -1,4 +1,4 @@
-// MERGE SORT IS STABLE, Time complexity is n O(log n), and space-complexity is O(n)
+// MERGE SORT IS STABLE, Time complexity is O(n log n), and space-complexity is O(n)
 // This function creates a new array
 export function mergeSort(nums: number[]): number[] {
   if (nums.length === 1 || nums.length === 0) {
@@ -26,7 +26,6 @@ function merge(left: number[], right: number[]): number[] {
   while (left.length) {
     result.push(left.shift() as number);
   }
-
   while (right.length) {
     result.push(right.shift() as number);
   }
@@ -39,9 +38,11 @@ export function mergeSortInPlace(
   start: number = 0,
   end: number = nums.length
 ): void {
+  // at leasts there should be two elements in array when it should be passed into mergeInPlace
   if (end - start === 1 || !nums.length) {
     return;
   }
+
   // mid should be first element from the second half of array
   const mid = start + Math.floor((end - start) / 2);
   mergeSortInPlace(nums, start, mid);
