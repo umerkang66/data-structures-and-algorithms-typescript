@@ -18,7 +18,9 @@
     "dev:graphs": "nodemon graphs/index.ts",
     "test:graphs": "jest graphs --watch",
     "dev:recursion": "nodemon recursion/index.ts",
-    "test:recursion": "jest recursion --watch"
+    "test:recursion": "jest recursion --watch",
+    "dev:sorting": "nodemon sorting/index.ts",
+    "test:sorting": "jest sorting --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
