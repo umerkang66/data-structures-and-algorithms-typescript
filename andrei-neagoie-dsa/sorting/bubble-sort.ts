@@ -14,7 +14,7 @@ export function bubbleSort(nums: number[]): void {
 export function bubbleSort2(nums: number[]): void {
   for (let i = 0; i < nums.length; i++) {
     // at every outer iteration, largest element will be at last, so don't need to check the last item
-    for (let j = i + 1; j < nums.length - i; j++) {
+    for (let j = i + 1; j < nums.length; j++) {
       if (nums[i] > nums[j]) {
         const higher = nums[i];
         nums[i] = nums[j];
