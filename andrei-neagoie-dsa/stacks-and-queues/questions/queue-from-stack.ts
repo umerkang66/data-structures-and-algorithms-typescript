@@ -19,8 +19,6 @@ export class QueueFromStack<T> {
     while (this.firstStack.peek()) {
       const poppedItem = this.firstStack.pop();
       if (poppedItem) this.secondStack.push(poppedItem);
-
-      console.log('1');
     }
 
     const firstItem = this.secondStack.pop();
