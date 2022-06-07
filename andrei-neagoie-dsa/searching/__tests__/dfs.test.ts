@@ -1,4 +1,4 @@
-import { BinarySearchTree } from '../breadth-first-search';
+import { BinarySearchTree } from '../bfs-dfs';
 
 let tree: BinarySearchTree<number>;
 

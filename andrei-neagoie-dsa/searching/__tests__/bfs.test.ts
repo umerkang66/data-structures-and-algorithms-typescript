@@ -1,4 +1,4 @@
-import { BinarySearchTree } from '../breadth-first-search';
+import { BinarySearchTree } from '../bfs-dfs';
 
 test('can correctly return breath-first-searched answer', () => {
   const tree = new BinarySearchTree<number>(9);

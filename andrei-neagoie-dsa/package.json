@@ -22,7 +22,9 @@
     "dev:sorting": "nodemon sorting/index.ts",
     "test:sorting": "jest sorting --watch",
     "dev:searching": "nodemon searching/index.ts",
-    "test:searching": "jest searching --watch"
+    "test:searching": "jest searching --watch",
+    "dev:dp": "nodemon dp/index.ts",
+    "test:dp": "jest dp --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",

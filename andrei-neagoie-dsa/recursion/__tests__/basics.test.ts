@@ -14,7 +14,7 @@ test('can return correct FACTORIAL', () => {
   expect(factorialRecursive(6)).toBe(720);
 });
 
-test('cn return correct FIBONACCI no.', () => {
+test('can return correct FIBONACCI no.', () => {
   expect(fibonacci(0)).toBe(0);
   expect(fibonacci(1)).toBe(1);
   expect(fibonacci(2)).toBe(1);
