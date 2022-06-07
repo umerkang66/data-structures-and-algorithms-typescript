@@ -1,3 +1,5 @@
+import { Queue } from '../stacks-and-queues/queue';
+
 type BinarySearchAble = number | string;
 
 export class BinarySearchTreeNode<T extends BinarySearchAble> {
@@ -151,10 +153,6 @@ export class BinarySearchTree<T extends BinarySearchAble> {
               }
             }
 
-            if (value === 4) {
-              console.log('2');
-            }
-
             return currentNode;
           } else if (!currentNode.left && !currentNode.right) {
             // 3) No left or right child available
@@ -206,6 +204,93 @@ export class BinarySearchTree<T extends BinarySearchAble> {
     }
 
     return null;
+  }
+
+  public breathFirstSearch(): BinarySearchAble[] {
+    const results: BinarySearchAble[] = [];
+    let currentNode = this.root;
+
+    // if we have a really wide tree, this will get really large, width of tree tells the space complexity
+    let queue = new Queue<BinarySearchTreeNode<T> | null>();
+    if (currentNode) queue.enqueue(currentNode);
+
+    while (queue.peek()) {
+      currentNode = queue.dequeue();
+      if (currentNode) {
+        results.push(currentNode.value);
+        if (currentNode.left) {
+          queue.enqueue(currentNode.left);
+        }
+        if (currentNode.right) {
+          queue.enqueue(currentNode.right);
+        }
+      }
+    }
+
+    return results;
+  }
+
+  public breathFirstSearchRecursive(
+    queue = new Queue<BinarySearchTreeNode<T> | null>().enqueue(this.root),
+    results: BinarySearchAble[] = []
+  ): BinarySearchAble[] {
+    if (!queue.peek()) {
+      return results;
+    }
+    const currentNode = queue.dequeue();
+    if (currentNode) {
+      results.push(currentNode.value);
+      if (currentNode.left) {
+        queue.enqueue(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.enqueue(currentNode.right);
+      }
+    }
+    return this.breathFirstSearchRecursive(queue, results);
+  }
+
+  // DFS, the higher the height, the more memory will be taken by recursive stack, height of tree tells the space complexity
+  public DFSInOrder(
+    node: BinarySearchTreeNode<T> | null = this.root,
+    list: BinarySearchAble[] = []
+  ): BinarySearchAble[] {
+    if (node && node.left) {
+      this.DFSInOrder(node.left, list);
+    }
+    if (node) list.push(node.value);
+    if (node && node.right) {
+      this.DFSInOrder(node.right, list);
+    }
+    return list;
+  }
+
+  public DFSPreOrder(
+    node: BinarySearchTreeNode<T> | null = this.root,
+    list: BinarySearchAble[] = []
+  ): BinarySearchAble[] {
+    if (node) list.push(node.value);
+    if (node && node.left) {
+      this.DFSPreOrder(node.left, list);
+    }
+    if (node && node.right) {
+      this.DFSPreOrder(node.right, list);
+    }
+    return list;
+  }
+
+  public DFSPostOrder(
+    node: BinarySearchTreeNode<T> | null = this.root,
+    list: BinarySearchAble[] = []
+  ): BinarySearchAble[] {
+    if (node && node.left) {
+      this.DFSPostOrder(node.left, list);
+    }
+    if (node && node.right) {
+      this.DFSPostOrder(node.right, list);
+    }
+    if (node) list.push(node.value);
+    return list;
   }
 }
 

@@ -65,3 +65,30 @@ test('can delete items from bst', () => {
   expect(tree.remove(8)?.value).toBe(8);
   expect(tree.remove(10)?.value).toBe(10);
 });
+
+let tree: BinarySearchTree<number>;
+
+beforeEach(() => {
+  tree = new BinarySearchTree<number>(9);
+  tree.insert(4).insert(6).insert(20).insert(170).insert(15).insert(1);
+});
+
+test('can correctly return breath-first-searched answer', () => {
+  expect(tree.breathFirstSearch()).toEqual([9, 4, 20, 1, 6, 15, 170]);
+});
+
+test('can correctly return breath-first-searched answer recursively', () => {
+  expect(tree.breathFirstSearchRecursive()).toEqual([9, 4, 20, 1, 6, 15, 170]);
+});
+
+test('depth-first-searched in-order', () => {
+  expect(tree.DFSInOrder()).toEqual([1, 4, 6, 9, 15, 20, 170]);
+});
+
+test('depth-first-searched pre-order', () => {
+  expect(tree.DFSPreOrder()).toEqual([9, 4, 1, 6, 20, 15, 170]);
+});
+
+test('depth-first-searched post-order', () => {
+  expect(tree.DFSPostOrder()).toEqual([1, 6, 4, 15, 170, 20, 9]);
+});
