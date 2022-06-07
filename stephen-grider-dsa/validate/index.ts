@@ -1,20 +1,21 @@
 import { Node } from './node';
 
-export function validate(
-  node: Node<number> | null,
-  min: number | null = null,
-  max: number | null = null
-): boolean {
-  if (!node) {
-    return true;
-  }
+export function validate(root: Node<number> | null): boolean {
+  const traverse = (
+    node: Node<number> | null,
+    min: number,
+    max: number
+  ): boolean => {
+    if (!node) return true;
 
-  if ((max !== null && node.data > max) || (min !== null && node.data < min)) {
-    return false;
-  }
+    if (node.data <= min) return false;
+    if (node.data >= max) return false;
 
-  const leftResult = validate(node.left, min, node.data);
-  const rightResult = validate(node.right, node.data, max);
+    return (
+      traverse(node.left, min, node.data) &&
+      traverse(node.right, node.data, max)
+    );
+  };
 
-  return leftResult && rightResult;
+  return traverse(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
 }
