@@ -1,3 +1,5 @@
+// This pattern uses object or sets to collect values / frequencies of values.
+
 export function same(arr1: number[], arr2: number[]): boolean {
     if (arr1.length !== arr2.length) {
         return false;
