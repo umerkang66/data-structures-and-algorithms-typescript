@@ -25,6 +25,7 @@ export function sameArrSquared(arr1: number[], arr2: number[]): boolean {
   return true;
 }
 
+// if characters of second string are present in first string but in different order, they are anagrams of each other
 export function validAnagram(str1: string, str2: string): boolean {
   if (str1.length !== str2.length) {
     return false;
