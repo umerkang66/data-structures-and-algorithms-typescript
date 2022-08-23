@@ -1,5 +1,6 @@
 // This pattern uses object or sets to collect values / frequencies of values.
 
+// check if one array is the actual squared array of other, array can also contains duplicate
 export function sameArrSquared(arr1: number[], arr2: number[]): boolean {
   if (arr1.length !== arr2.length) {
     return false;
@@ -51,4 +52,29 @@ export function validAnagram(str1: string, str2: string): boolean {
     }
   }
   return true;
+}
+
+export function containsDuplicate(arr: number[]): boolean {
+  interface DuplicateHash {
+    [key: number]: number;
+  }
+  const duplicateHash: DuplicateHash = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (duplicateHash[arr[i]]) {
+      // if it already exists in the hash, increase the counter
+      duplicateHash[arr[i]] += 1;
+    } else {
+      // otherwise add the current element in the hash, with the counter of 1
+      duplicateHash[arr[i]] = 1;
+    }
+  }
+
+  for (const key in duplicateHash) {
+    if (duplicateHash[key] > 1) {
+      return true;
+    }
+  }
+
+  return false;
 }
