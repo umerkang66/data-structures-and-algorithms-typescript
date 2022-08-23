@@ -43,3 +43,51 @@ export function countUnique(arr: number[]): number {
   // all the unique values will be at the start of the array, til the pointer1, pointer1 is zero based.
   return pointer1 + 1;
 }
+
+/**
+ * IsSubsequence - Returns true if it is or false if it is not.
+
+ * Link: https://leetcode.com/problems/is-subsequence/
+ */
+export function isSubsequence(str1: string, str2: string): boolean {
+  if (!str1.length) return true;
+
+  let firstStrPointer = 0;
+  let secondStrPointer = 0;
+  let answer = false;
+
+  while (firstStrPointer < str1.length && secondStrPointer < str2.length) {
+    if (str1[firstStrPointer] === str2[secondStrPointer]) {
+      answer = true;
+      // if current char is equal, move the both pointers
+      firstStrPointer++;
+      secondStrPointer++;
+    } else {
+      if (firstStrPointer < str1.length) {
+        // firstString might have been completed, so if it is completed, not change the previous answer, otherwise set the answer to "false"
+        answer = false;
+      }
+      // if current char is not equal, move only the second pointer, because current char of first string might exist in the second string in later iterations
+      secondStrPointer++;
+    }
+  }
+
+  if (firstStrPointer < str1.length) {
+    return false;
+  }
+  return answer;
+}
+
+export function isSubsequence2(str1: string, str2: string): boolean {
+  if (str1.length > str2.length) {
+    return false;
+  }
+  let str1Counter = 0;
+  for (let i = 0; i < str2.length; i++) {
+    if (str1[str1Counter] === str2[i]) {
+      str1Counter++;
+    }
+  }
+  // check if string1 counter have moved to the end of string 1, otherwise some elements in string1 are left
+  return str1Counter === str1.length;
+}
