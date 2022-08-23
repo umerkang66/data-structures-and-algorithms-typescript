@@ -1,8 +1,8 @@
 import { sumZeroInSortedArr, countUnique } from '../multiple-pointers';
 
 describe('Question SumZeroInSortedArr', () => {
-  test('can return correct pairs that result in 0 by addition', () => {
-    expect(sumZeroInSortedArr([-4, -3, -2, -1, 0, 1, 2, 5])).toEqual([-2, 2]);
+  test('can return correct pairs index that result in 0 by addition', () => {
+    expect(sumZeroInSortedArr([-4, -3, -2, -1, 0, 1, 2, 5])).toEqual([2, 6]);
   });
 
   test('can return empty array result in 0 by addition', () => {

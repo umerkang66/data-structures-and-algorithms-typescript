@@ -30,9 +30,7 @@ export function maxSubarraySumSlidingWindow(arr: number[], size: number) {
   for (let i = 0; i < size; i++) {
     maxSum += arr[i];
   }
-
   tempSum = maxSum;
-
   // after after the first subarray
   for (let i = size; i < arr.length; i++) {
     // we have already calculated the sum of previous subarray

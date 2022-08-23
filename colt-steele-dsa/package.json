@@ -1,19 +1,20 @@
 {
-    "name": "data-structures-and-algorithms-typescript",
-    "version": "1.0.0",
-    "description": "Data Structure and Algorithms",
-    "main": "index.js",
-    "scripts": {
-        "dev:common-patterns": "nodemon common-patterns/index.ts",
-        "test:common-patterns": "jest common-patterns --watch"
-    },
-    "devDependencies": {
-        "@types/jest": "^27.5.1",
-        "jest": "^28.1.0",
-        "nodemon": "^2.0.16",
-        "ts-jest": "^28.0.2",
-        "ts-node": "^10.7.0"
-    },
-    "author": "Umer Kang",
-    "license": "ISC"
+  "name": "data-structures-and-algorithms-typescript",
+  "version": "1.0.0",
+  "description": "Data Structure and Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "dev:common-patterns": "nodemon common-patterns/index.ts",
+    "test:common-patterns": "jest common-patterns --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.7.4"
+  },
+  "author": "Umer Kang",
+  "license": "ISC"
 }
