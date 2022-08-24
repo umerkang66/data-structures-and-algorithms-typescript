@@ -53,7 +53,7 @@ export function maxSubarraySumSlidingWindow(
   return maxSum;
 }
 
-export function longestSubstring(str: string): number {
+export function longestSubstringWithMap(str: string): number {
   const seenHash = new Map<string, number>();
   // counter for starting elements, if reoccurring elements exists, remove this start element, and increment it.
   let start = 0;
@@ -72,6 +72,37 @@ export function longestSubstring(str: string): number {
       if (seenHash.get(str[start]) === 0) {
         // if it has become 0 delete it
         seenHash.delete(str[start]);
+      }
+      // we can decrease the window size by increasing the start, and remove the start element (if element count is more than 1 in map, we just decrease the count)
+      start++;
+    }
+  }
+
+  return maxLength;
+}
+
+export function longestSubstringWithObj(str: string): number {
+  interface SeenHash {
+    [key: string]: number;
+  }
+  const seenHash: SeenHash = {};
+  // counter for starting elements, if reoccurring elements exists, remove this start element, and increment it.
+  let start = 0;
+  let maxLength = 0;
+
+  for (let end = 0; end < str.length; end++) {
+    seenHash[str[end]] = (seenHash[str[end]] || 0) + 1;
+
+    // if the seenHash size is equal to current window size, all elements in current subarray window are unique characters
+    if (Object.keys(seenHash).length === end - start + 1) {
+      // length of current window can be found by "end-start+1"
+      maxLength = Math.max(maxLength, end - start + 1);
+    } else {
+      // if current window size is not equal to the hashMap size, it means window has an element that appears twice
+      seenHash[str[start]] = (seenHash[str[start]] as number) - 1;
+      if (seenHash[str[start]] === 0) {
+        // if it has become 0 delete it
+        delete seenHash[str[start]];
       }
       // we can decrease the window size by increasing the start, and remove the start element (if element count is more than 1 in map, we just decrease the count)
       start++;

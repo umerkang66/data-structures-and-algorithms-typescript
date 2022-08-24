@@ -1,5 +1,6 @@
 import {
-  longestSubstring,
+  longestSubstringWithMap,
+  longestSubstringWithObj,
   maxSubarraySum,
   maxSubarraySumSlidingWindow,
 } from '../sliding-window';
@@ -35,11 +36,13 @@ describe('Question MaxSubArray Optimized by Sliding window', () => {
 describe('Longest Substring without repeating characters', () => {
   test('returns the correct number of longest substring', () => {
     const str = 'pwwkew';
-    expect(longestSubstring(str)).toBe(3);
+    expect(longestSubstringWithMap(str)).toBe(3);
+    expect(longestSubstringWithObj(str)).toBe(3);
   });
 
   test('returns the correct number of longest substring if all elements are repeating', () => {
     const str = 'bbbbb';
-    expect(longestSubstring(str)).toBe(1);
+    expect(longestSubstringWithMap(str)).toBe(1);
+    expect(longestSubstringWithObj(str)).toBe(1);
   });
 });
