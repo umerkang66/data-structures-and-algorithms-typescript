@@ -55,14 +55,16 @@ export function maxSubarraySumSlidingWindow(
 
 export function longestSubstring(str: string): number {
   const seenHash = new Map<string, number>();
+  // counter for starting elements, if reoccurring elements exists, remove this start element, and increment it.
   let start = 0;
   let maxLength = 0;
 
-  for (let end = start; end < str.length; end++) {
+  for (let end = 0; end < str.length; end++) {
     seenHash.set(str[end], (seenHash.get(str[end]) || 0) + 1);
 
     // if the seenHash size is equal to current window size, all elements in current subarray window are unique characters
     if (seenHash.size === end - start + 1) {
+      // length of current window can be found by "end-start+1"
       maxLength = Math.max(maxLength, end - start + 1);
     } else {
       // if current window size is not equal to the hashMap size, it means window has an element that appears twice
