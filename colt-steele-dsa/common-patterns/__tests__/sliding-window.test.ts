@@ -1,4 +1,8 @@
-import { maxSubarraySum, maxSubarraySumSlidingWindow } from '../sliding-window';
+import {
+  longestSubstring,
+  maxSubarraySum,
+  maxSubarraySumSlidingWindow,
+} from '../sliding-window';
 
 describe('Question MaxSubArray Naive', () => {
   test('returns correct result on valid inputs', () => {
@@ -25,5 +29,17 @@ describe('Question MaxSubArray Optimized by Sliding window', () => {
   test('returns null on invalid input', () => {
     expect(maxSubarraySumSlidingWindow([], 4)).toBe(null);
     expect(maxSubarraySumSlidingWindow([1, 2, 3, 4], 5)).toBe(null);
+  });
+});
+
+describe('Longest Substring without repeating characters', () => {
+  test('returns the correct number of longest substring', () => {
+    const str = 'pwwkew';
+    expect(longestSubstring(str)).toBe(3);
+  });
+
+  test('returns the correct number of longest substring if all elements are repeating', () => {
+    const str = 'bbbbb';
+    expect(longestSubstring(str)).toBe(1);
   });
 });
