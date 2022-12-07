@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev:common-patterns": "nodemon common-patterns/index.ts",
-    "test:common-patterns": "jest common-patterns --watch"
+    "test:common-patterns": "jest common-patterns --watch",
+    "dev:searching": "nodemon searching/index.ts",
+    "test:searching": "jest searching --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
