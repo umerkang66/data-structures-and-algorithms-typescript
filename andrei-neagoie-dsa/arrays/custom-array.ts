@@ -74,6 +74,7 @@ export class CustomArray<T> {
       this.data[i] = this.data[i + 1];
     }
 
+    // technically this would be an empty space in memory
     delete this.data[this.length - 1];
     this.length--;
   }
