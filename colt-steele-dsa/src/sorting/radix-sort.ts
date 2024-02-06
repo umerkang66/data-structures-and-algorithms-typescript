@@ -1,3 +1,26 @@
+// RADIX SORT
+export function radixSort(nums: number[]) {
+  const maxDigit = maxDigits(nums);
+
+  for (let i = 0; i < maxDigit; i++) {
+    const digitBucket = Array.from({ length: 10 }, () => [] as number[]);
+
+    for (let j = 0; j < nums.length; j++) {
+      const lastDigit = getDigit(nums[j], i);
+      digitBucket[lastDigit].push(nums[j]);
+    }
+
+    let index = 0;
+    for (let k = 0; k < digitBucket.length; k++) {
+      if (digitBucket[k].length) {
+        for (let l = 0; l < digitBucket[k].length; l++) {
+          nums[index++] = digitBucket[k][l];
+        }
+      }
+    }
+  }
+}
+
 // HELPER FUNCTIONS
 function getDigit(num: number, index: number): number {
   // get the ith digit from right side
@@ -25,27 +48,4 @@ function maxDigits(nums: number[]): number {
     }
   }
   return max_digits;
-}
-
-// RADIX SORT
-export function radixSort(nums: number[]) {
-  const maxDigit = maxDigits(nums);
-
-  for (let i = 0; i < maxDigit; i++) {
-    const digitBucket = Array.from({ length: 10 }, () => [] as number[]);
-
-    for (let j = 0; j < nums.length; j++) {
-      const lastDigit = getDigit(nums[j], i);
-      digitBucket[lastDigit].push(nums[j]);
-    }
-
-    let index = 0;
-    for (let k = 0; k < digitBucket.length; k++) {
-      if (digitBucket[k].length) {
-        for (let l = 0; l < digitBucket[k].length; l++) {
-          nums[index++] = digitBucket[k][l];
-        }
-      }
-    }
-  }
 }
