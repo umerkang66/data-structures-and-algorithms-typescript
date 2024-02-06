@@ -4,11 +4,11 @@
   "description": "Data Structure and Algorithms",
   "main": "index.js",
   "scripts": {
-    "dev:common-patterns": "nodemon common-patterns/index.ts",
+    "dev:common-patterns": "nodemon src/common-patterns/index.ts",
     "test:common-patterns": "jest common-patterns --watch",
-    "dev:searching": "nodemon searching/index.ts",
+    "dev:searching": "nodemon src/searching/index.ts",
     "test:searching": "jest searching --watch",
-    "dev:sorting": "nodemon sorting/index.ts",
+    "dev:sorting": "nodemon src/sorting/index.ts",
     "test:sorting": "jest sorting --watch"
   },
   "devDependencies": {

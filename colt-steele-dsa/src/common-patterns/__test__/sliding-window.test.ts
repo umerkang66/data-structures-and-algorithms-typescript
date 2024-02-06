@@ -1,21 +1,21 @@
 import {
   longestSubstringWithMap,
   longestSubstringWithObj,
-  maxSubarraySum,
+  maxSubarraySumNaive,
   maxSubarraySumSlidingWindow,
 } from '../sliding-window';
 
 describe('Question MaxSubArray Naive', () => {
   test('returns correct result on valid inputs', () => {
-    expect(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)).toBe(10);
-    expect(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 4)).toBe(17);
-    expect(maxSubarraySum([4, 2, 1, 6], 1)).toBe(6);
-    expect(maxSubarraySum([4, 2, 1, 6, 2], 4)).toBe(13);
+    expect(maxSubarraySumNaive([1, 2, 5, 2, 8, 1, 5], 2)).toBe(10);
+    expect(maxSubarraySumNaive([1, 2, 5, 2, 8, 1, 5], 4)).toBe(17);
+    expect(maxSubarraySumNaive([4, 2, 1, 6], 1)).toBe(6);
+    expect(maxSubarraySumNaive([4, 2, 1, 6, 2], 4)).toBe(13);
   });
 
   test('returns null on invalid input', () => {
-    expect(maxSubarraySum([], 4)).toBe(null);
-    expect(maxSubarraySum([1, 2, 3, 4], 5)).toBe(null);
+    expect(maxSubarraySumNaive([], 4)).toBe(null);
+    expect(maxSubarraySumNaive([1, 2, 3, 4], 5)).toBe(null);
   });
 });
 
