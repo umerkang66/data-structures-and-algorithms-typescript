@@ -7,7 +7,9 @@
     "dev:common-patterns": "nodemon common-patterns/index.ts",
     "test:common-patterns": "jest common-patterns --watch",
     "dev:searching": "nodemon searching/index.ts",
-    "test:searching": "jest searching --watch"
+    "test:searching": "jest searching --watch",
+    "dev:sorting": "nodemon sorting/index.ts",
+    "test:sorting": "jest sorting --watch"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
