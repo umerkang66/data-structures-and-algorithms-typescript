@@ -1,5 +1,8 @@
 // which subarray of array has maximum sum
-export function maxSubarraySum(arr: number[], size: number): number | null {
+export function maxSubarraySumNaive(
+  arr: number[],
+  size: number
+): number | null {
   if (!arr.length || size > arr.length) {
     return null;
   }
