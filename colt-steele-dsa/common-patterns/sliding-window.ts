@@ -29,26 +29,28 @@ export function maxSubarraySumSlidingWindow(
   if (!arr.length || size > arr.length) {
     return null;
   }
-  let startPointer = 0;
-  let endPointer = size;
-  let currentSum = 0;
+  let start = 0;
+  let end = size;
   let maxSum = Number.MIN_SAFE_INTEGER;
+  let currentSum = 0;
+
   // first find the sum of initial startPointer till endPointer-1 (endPointer is size, and length is 0 based, then from 0 to 2 will be 3 elements) element (first subarray)
-  for (let i = startPointer; i < endPointer; i++) {
+  for (let i = start; i < end; i++) {
     currentSum += arr[i];
-    maxSum = Math.max(maxSum, currentSum);
   }
+  maxSum = Math.max(maxSum, currentSum);
+
   // start this loop after the first subarray, we have already calculated the sum of first subarray, for to find the sum of next subarray, add the next element to it, and subtract the first element of the previous subarray, which is  not the part of current subarray
-  while (endPointer < arr.length) {
+  while (end < arr.length) {
     // add the current endPointer element to the currentSum
-    currentSum += arr[endPointer];
+    currentSum += arr[end];
     // remove the current startPointer element from the currentSum
-    currentSum -= arr[startPointer];
+    currentSum -= arr[start];
     // find the max at each iteration
     maxSum = Math.max(maxSum, currentSum);
     // move the sliding window
-    startPointer++;
-    endPointer++;
+    start++;
+    end++;
   }
   return maxSum;
 }
