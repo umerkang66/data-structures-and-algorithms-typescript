@@ -8,6 +8,6 @@ if (!folderName) {
   throw new Error('Folder name is not provided');
 }
 
-fs.mkdirSync(path.join(process.cwd(), folderName));
-fs.mkdirSync(path.join(process.cwd(), folderName, '__test__'));
-fs.writeFileSync(path.join(process.cwd(), folderName, 'index.ts'), '');
+fs.mkdirSync(path.join(process.cwd(), 'src', folderName));
+fs.mkdirSync(path.join(process.cwd(), 'src', folderName, '__test__'));
+fs.writeFileSync(path.join(process.cwd(), 'src', folderName, 'index.ts'), '');

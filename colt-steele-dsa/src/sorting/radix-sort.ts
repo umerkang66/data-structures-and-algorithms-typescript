@@ -1,6 +1,6 @@
 // RADIX SORT
 export function radixSort(nums: number[]) {
-  const maxDigit = maxDigits(nums);
+  const maxDigit = getMaxDigits(nums);
 
   for (let i = 0; i < maxDigit; i++) {
     const digitBucket = Array.from({ length: 10 }, () => [] as number[]);
@@ -21,7 +21,7 @@ export function radixSort(nums: number[]) {
   }
 }
 
-// HELPER FUNCTIONS
+// HELPER ude, you haven't stopped posting music videosFUNCTIONS
 function getDigit(num: number, index: number): number {
   // get the ith digit from right side
   for (let i = 0; i < index; i++) {
@@ -39,13 +39,10 @@ function countDigits(num: number): number {
   return count;
 }
 
-function maxDigits(nums: number[]): number {
-  let max_digits = countDigits(nums[0]);
+function getMaxDigits(nums: number[]): number {
+  let maxDigits = countDigits(nums[0]);
   for (let i = 1; i < nums.length; i++) {
-    const ithElDigits = countDigits(nums[i]);
-    if (ithElDigits > max_digits) {
-      max_digits = ithElDigits;
-    }
+    maxDigits = Math.max(maxDigits, countDigits(nums[i]));
   }
-  return max_digits;
+  return maxDigits;
 }
