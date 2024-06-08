@@ -294,7 +294,7 @@ export class BinarySearchTree<T extends BinarySearchAble> {
   }
 }
 
-export function traverse<T extends number | string>(
+export function traverse<T extends BinarySearchAble>(
   node: BinarySearchTreeNode<T> | null
 ): BinarySearchTreeNode<T> | null {
   if (!node) {
